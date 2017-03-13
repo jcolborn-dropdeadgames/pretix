@@ -59,4 +59,9 @@ def contextprocessor(request):
         if not gs.settings.update_check_ack and 'runserver' not in sys.argv:
             ctx['warning_update_check_active'] = True
 
+    if settings.DEBUG and 'runserver' not in sys.argv:
+        ctx['debug_warning'] = True
+    elif 'runserver' in sys.argv:
+        ctx['development_warning'] = True
+
     return ctx
